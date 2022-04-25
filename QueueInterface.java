@@ -1,8 +1,8 @@
 public QueueInterface<T> getBreadthFirstTraversal(T origin)
 {
    resetVertices();
-   QueueInterface<T> traversalOrder = new LinkedQueue<>();
-   QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>();
+   QueueInterface<T> traversalOrder = new LinkedQueue<>(); // a new queue for the resulting traversal order.
+   QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>(); // a new queue to hold the vertices as they are visited.
    
    VertexInterface<T> originVertex = vertices.getValue(origin);
    originVertex.visit();
