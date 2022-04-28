@@ -65,5 +65,15 @@ public class Search<T> implements QueueInterface<T> {
 
         return traversalOrder;
     }
+    protected void resetVertices()
+    {
+        Iterator<VertexInterface<T>> vertexIterator = vertices.getValueIterator();
+        while (vertexIterator.hasNext())
+        {
+            VertexInterface<T> nextVertex = VertexIterator.next();
+            nextVertex.unvisit();
+            nextVertex.setCost(0);
+            nextVertex.setPredecessor(null);
+        } // end while
+    } // end resetVertices
 }
-
