@@ -1,4 +1,7 @@
-public class Search implements QueueInterface<T>{
+import java.util.*;
+import java.lang.Object;
+
+public class Search<T> implements QueueInterface<T> {
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
         resetVertices();
@@ -63,3 +66,4 @@ public class Search implements QueueInterface<T>{
         return traversalOrder;
     }
 }
+
