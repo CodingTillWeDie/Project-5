@@ -1,6 +1,4 @@
-import java.util.Iterator;
-
-public class GraphDriver<T>
+public class GraphDriver extends Graph<>
 {
     public void main(String args[])
     {
@@ -32,13 +30,13 @@ public class GraphDriver<T>
 
         // perform a breadth-first traversal on the
         // graph starting at vertex A.
-        QueueInterface<Integer> breadthFirst = getBreadthFirstTraversal("A");
+        QueueInterface<String> breadthFirst = getBreadthFirstTraversal("A");
 
         // display the vertices in order in which they were visited.
         System.out.print("Displaying the vertices in breadth-first traversal order: ");
         while (!breadthFirst.isEmpty())
         {
-            T label = breadthFirst.dequeue();
+            String label = breadthFirst.dequeue();
 
             System.out.print(label + " -> ");
         }
@@ -47,13 +45,13 @@ public class GraphDriver<T>
 
         // perform a depth-first traversal on the
         // graph starting at vertex A.
-        QueueInterface<Integer> depthFirst = getDepthFirstTraversal("A");
+        QueueInterface<String> depthFirst = getDepthFirstTraversal("A");
 
         // display the vertices in order in which they were visited.
         System.out.print("Displaying the vertices in depth-first traversal order: ");
         while (!depthFirst.isEmpty())
         {
-            T label = depthFirst.dequeue();
+            String label = depthFirst.dequeue();
 
             System.out.print(label + " -> ");
         }
