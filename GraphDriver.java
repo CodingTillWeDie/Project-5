@@ -1,4 +1,4 @@
-public class GraphDriver extends Graph<>
+public class GraphDriver
 {
     public void main(String args[])
     {
@@ -30,7 +30,7 @@ public class GraphDriver extends Graph<>
 
         // perform a breadth-first traversal on the
         // graph starting at vertex A.
-        QueueInterface<String> breadthFirst = getBreadthFirstTraversal("A");
+        QueueInterface<String> breadthFirst = graph.getBreadthFirstTraversal("A");
 
         // display the vertices in order in which they were visited.
         System.out.print("Displaying the vertices in breadth-first traversal order: ");
@@ -45,7 +45,7 @@ public class GraphDriver extends Graph<>
 
         // perform a depth-first traversal on the
         // graph starting at vertex A.
-        QueueInterface<String> depthFirst = getDepthFirstTraversal("A");
+        QueueInterface<String> depthFirst = graph.getDepthFirstTraversal("A");
 
         // display the vertices in order in which they were visited.
         System.out.print("Displaying the vertices in depth-first traversal order: ");
