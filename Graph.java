@@ -19,28 +19,40 @@ public class Graph<T>
      the label of the origin vertex at the queue's front. */
     public QueueInterface<T> getBreadthFirstTraversal(T origin)
     {
-        QueueInterface<T> traversalOrder = new LinkedQueue<>(); // a new queue for the resulting traversal order.
-        QueueInterface<VertexInterface<T>> vertexQueue = new LinkedQueue<>(); // a new queue to hold the vertices as they are visited.
+        resetVertices();
 
-        VertexInterface<T> originVertex = vertices.getValue(origin);
-        originVertex.visit();
-        traversalOrder.enqueue(origin);    // Enqueue vertex label
-        vertexQueue.enqueue(originVertex); // Enqueue vertex
+        // create a new queue for the resulting traversal order.
+        QueueInterface<T> traversalOrder = new LinkedQueue<>();
+        // create a new queue to hold the vertices as they are visited.
+        QueueInterface<T> vertexQueue = new LinkedQueue<>();
+
+        // mark the origin vertex as visited.
+        T originVertex = origin;
+        visitedVertices[numberOfVisitedVertices] = originVertex;
+        numberOfVisitedVertices++;
+
+        // add the origin vertex to the traversal order.
+        traversalOrder.enqueue(origin);
+        // enqueue the origin vertex to the vertex queue.
+        vertexQueue.enqueue(originVertex);
 
         while (!vertexQueue.isEmpty())
         {
-            VertexInterface<T> frontVertex = vertexQueue.dequeue();
-            Iterator<VertexInterface<T>> neighbors = frontVertex.getNeighborIterator();
+            T frontVertex = vertexQueue.dequeue();
 
-            while (neighbors.hasNext())
+            while (hasNextNeighbor(frontVertex))
             {
-                VertexInterface<T> nextNeighbor = neighbors.next();
-                if (!nextNeighbor.isVisited())
-                {
-                    nextNeighbor.visit();
-                    traversalOrder.enqueue(nextNeighbor.getLabel());
-                    vertexQueue.enqueue(nextNeighbor);
-                } // end if
+                T nextNeighbor = getUnvisitedNeighbor(frontVertex);
+
+                // mark next neighbor as visited.
+                visitedVertices[numberOfVisitedVertices] = nextNeighbor;
+                numberOfVisitedVertices++;
+
+                // add the neighbor vertex to the traversal order.
+                traversalOrder.enqueue(nextNeighbor);
+                // enqueue the neighbor vertex to the vertex queue.
+                vertexQueue.enqueue(nextNeighbor);
+                
             } // end while
         } // end while
 
@@ -53,6 +65,8 @@ public class Graph<T>
      the label of the origin vertex at the queue's front. */
     public QueueInterface<T> getDepthFirstTraversal(T origin)
     {
+        resetVertices();
+
         // create a new queue for the resulting traversal order.
         QueueInterface<T> traversalOrder = new LinkedQueue<T>();
         // create a new stack to hold the vertices as they are visited.
@@ -95,6 +109,10 @@ public class Graph<T>
         return traversalOrder;
     }
 
+    /** Gets an unvisited neighbor, if there are any,
+        of the vertex that was passed in as an argument.
+        @return Either a vertex that is an unvisited neighbor or null
+                if no such neighbor exists. */
     public T getUnvisitedNeighbor(T vertexLabel)
     {
         T nextNeighbor = null;
@@ -137,6 +155,8 @@ public class Graph<T>
         return -1;
     }
 
+    /** Sees whether the vertex is marked as visited.
+        @return True if the vertex is visited. */
     public boolean isVisited(int vertexIndex)
     {
         boolean isVisited = false;
@@ -144,7 +164,7 @@ public class Graph<T>
         for (int i = 0; i < labels.length; ++i)
         {
             // use the logic that was used in intersection/contains() method for the Bag project here.
-            if (visitedVertices[])
+            
         }
 
         return isVisited;
@@ -185,6 +205,21 @@ public class Graph<T>
         }
         return answer;
     }
+
+    private boolean hasNextNeighbor(T vertex)
+    {
+        boolean result = false;
+        int vertexIndex = getIndex(vertex);
+        T unvisitedNeighbor = getUnvisitedNeighbor(vertex);
+
+        if ((neighbors(vertexIndex).length > 0) && (null != unvisitedNeighbor))
+        {
+            result = true;
+        }
+
+        return result;
+    }
+
     // Remove an edge
     public void removeEdge(int source, int target)
     {
@@ -201,6 +236,16 @@ public class Graph<T>
     public int size()
     {
         return labels.length;
+    }
+
+    protected void resetVertices()
+    {
+        int index;
+
+        for (index = 0; index < numberOfVisitedVertices; ++index)
+        {
+            visitedVertices[index] = null;
+        }
     }
 
 } // end of "Graph" class
