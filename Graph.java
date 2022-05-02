@@ -212,7 +212,7 @@ public class Graph<T>
         return answer;
     }
 
-    private boolean hasNextNeighbor(T vertex)
+    public boolean hasNextNeighbor(T vertex)
     {
         boolean result = false;
         int vertexIndex = getIndex(vertex);
@@ -245,7 +245,7 @@ public class Graph<T>
     }
 
     // reset the vertices by clearing any visited vertices.
-    protected void resetVertices()
+    public void resetVertices()
     {
         for (int index = 0; index < numberOfVisitedVertices; ++index)
         {
