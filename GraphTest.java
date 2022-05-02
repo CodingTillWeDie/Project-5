@@ -111,4 +111,102 @@ class GraphTest {
         graph.setLabel(8, "I");
         graph.addEdge(8,5);
     }
+    
+    private void createValidGraph2() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,0);
+    }
+    private void createValidGraph3() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,2);
+        graph.setLabel(2, "C");
+        graph.addEdge(2,0);
+        graph.addEdge(2,1);
+    }
+    private void createValidGraph4() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.addEdge(0,3);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,2);
+        graph.setLabel(2, "C");
+        graph.addEdge(2,1);
+        graph.setLabel(3, "D");
+        graph.addEdge(3,2);      
+    }
+    private void createValidGraph5() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.addEdge(0,3);
+        graph.addEdge(0,4);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,3);
+        graph.setLabel(2, "C");
+        graph.setLabel(3, "D");
+        graph.addEdge(3,2);
+        graph.addEdge(3,4);
+        graph.setLabel(4, "E");    
+    }
+    private void createValidGraph6() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.addEdge(0,3);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,4);
+        graph.addEdge(1,3);
+        graph.setLabel(2, "C");
+        graph.addEdge(2,3);
+        graph.addEdge(2,5);
+        graph.setLabel(3, "D");
+        graph.setLabel(4, "E");
+        graph.setLabel(5, "F");        
+    }
+    private void createValidGraph7() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,1);
+        graph.addEdge(0,2);
+        graph.addEdge(0,3);
+        graph.addEdge(0,4);
+        graph.addEdge(0,5);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,2);
+        graph.setLabel(2, "C");
+        graph.addEdge(2,3);
+        graph.setLabel(3, "D");
+        graph.addEdge(3,4);
+        graph.setLabel(4, "E");
+        graph.addEdge(4,5);
+        graph.setLabel(5, "F");
+        graph.addEdge(5,6);
+        graph.setLabel(6, "G");
+        graph.addEdge(6,0);
+    }
+    private void createValidGraph8() {
+        graph.setLabel(0, "A");
+        graph.addEdge(0,2);
+        graph.setLabel(1, "B");
+        graph.addEdge(1,0);
+        graph.setLabel(2, "C");
+        graph.addEdge(2,1);
+        graph.setLabel(3, "D");
+        graph.addEdge(3,1);
+        graph.addEdge(3,2);
+        graph.addEdge(3,5);
+        graph.addEdge(3,4);
+        graph.setLabel(4, "E");
+        graph.addEdge(4,5);
+        graph.setLabel(5, "F");
+        graph.addEdge(5,6);
+        graph.addEdge(5,7);
+        graph.setLabel(6, "G");
+        graph.addEdge(6,4);
+        graph.setLabel(7, "H");
+        graph.addEdge(7,4);
+    }
+    
 }
+
