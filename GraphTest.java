@@ -15,6 +15,13 @@ class GraphTest {
     @Test
     void getBreadthFirstTraversalTest() {
         createValidGraph();
+        createValidGraph2();
+        createValidGraph3();
+        createValidGraph4();
+        createValidGraph5();
+        createValidGraph6();
+        createValidGraph7();
+        createValidGraph8();
 
         QueueInterface<String> breadthFirst = graph.getBreadthFirstTraversal("A");
         assertNotNull(breadthFirst);
