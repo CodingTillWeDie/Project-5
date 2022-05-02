@@ -1,9 +1,11 @@
 public class GraphDriver
 {
-    public void main(String args[])
+    public static void main(String[] args)
     {
         // create a graph given in the project prompt.
-        Graph<String> graph = new Graph<>(9);
+        int graphSize = 9;
+        int counter = 1;
+        Graph<String> graph = new Graph<>(graphSize);
 
         graph.setLabel(0, "A");
         graph.addEdge(0,1);
@@ -38,10 +40,16 @@ public class GraphDriver
         {
             String label = breadthFirst.dequeue();
 
-            System.out.print(label + " -> ");
+            System.out.print(label);
+            if (counter < graphSize)
+            {
+                System.out.print(" -> ");
+                ++counter;
+            }
         }
         System.out.println();
-
+        // restart the counter that's used for the number of arrows used.
+        counter = 1;
 
         // perform a depth-first traversal on the
         // graph starting at vertex A.
@@ -53,7 +61,12 @@ public class GraphDriver
         {
             String label = depthFirst.dequeue();
 
-            System.out.print(label + " -> ");
+            System.out.print(label);
+            if (counter < graphSize)
+            {
+                System.out.print(" -> ");
+                ++counter;
+            }
         }
         System.out.println();
 
