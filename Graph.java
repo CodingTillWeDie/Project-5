@@ -31,7 +31,7 @@ public class Graph<T>
         visitedVertices[numberOfVisitedVertices] = originVertex;
         numberOfVisitedVertices++;
 
-        // add the origin vertex to the traversal order.
+        // enqueue the origin vertex to the traversal order.
         traversalOrder.enqueue(origin);
         // enqueue the origin vertex to the vertex queue.
         vertexQueue.enqueue(originVertex);
@@ -52,7 +52,7 @@ public class Graph<T>
                 traversalOrder.enqueue(nextNeighbor);
                 // enqueue the neighbor vertex to the vertex queue.
                 vertexQueue.enqueue(nextNeighbor);
-                
+
             } // end while
         } // end while
 
@@ -77,7 +77,7 @@ public class Graph<T>
         visitedVertices[numberOfVisitedVertices] = originVertex;
         numberOfVisitedVertices++;
 
-        // add the origin vertex to the traversal order.
+        // enqueue the origin vertex to the traversal order.
         traversalOrder.enqueue(origin);
         // push the origin vertex to the vertex stack so that
         // this traversal method will continue until origin
@@ -126,6 +126,7 @@ public class Graph<T>
             {
                 // if so, return this unvisited neighbor.
                 nextNeighbor = getLabel(neighbors[i]);
+                return nextNeighbor;
             }
         }
 
@@ -159,15 +160,20 @@ public class Graph<T>
         @return True if the vertex is visited. */
     public boolean isVisited(int vertexIndex)
     {
-        boolean isVisited = false;
+        T label = labels[vertexIndex];
 
-        for (int i = 0; i < labels.length; ++i)
+        for (int i = 0; i < visitedVertices.length; ++i)
         {
-            // use the logic that was used in intersection/contains() method for the Bag project here.
-            
+            // check to see if the vertex was marked as visited.
+            if (label == visitedVertices[i])
+            {
+                // if so, return true;
+                return true;
+            }
         }
 
-        return isVisited;
+        // otherwise, the vertex was not marked as visited.
+        return false;
     }
 
     // Test whether an edge exists
@@ -226,7 +232,7 @@ public class Graph<T>
         edges[source][target] = false;
     }
 
-    // Change the label of a vertex of this Graph
+    // Change the label of a vertex of this Graph.
     public void setLabel(int vertex, T newLabel)
     {
         labels[vertex] = newLabel;
@@ -238,14 +244,15 @@ public class Graph<T>
         return labels.length;
     }
 
+    // reset the vertices by clearing any visited vertices.
     protected void resetVertices()
     {
-        int index;
-
-        for (index = 0; index < numberOfVisitedVertices; ++index)
+        for (int index = 0; index < numberOfVisitedVertices; ++index)
         {
             visitedVertices[index] = null;
         }
+
+        numberOfVisitedVertices = 0;
     }
 
 } // end of "Graph" class
