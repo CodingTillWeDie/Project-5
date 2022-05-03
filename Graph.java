@@ -1,6 +1,6 @@
 public class Graph<T>
 {
-    private boolean[][] edges; // edges[i][j] is true if there is a vertex from i to j
+    private boolean[][] edges; // edges[i][j] is true if there is an edge from i to j
     private T[] labels; // labels[i] contains the label for vertex i
     private T[] visitedVertices;
     private int numberOfVisitedVertices;
