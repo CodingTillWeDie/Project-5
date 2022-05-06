@@ -7,7 +7,9 @@ public class LinkedGraph<T>
 
     public LinkedGraph(int n)
     {
-        list = new Node[n]; // All values initially null.
+        @SuppressWarnings("unchecked")
+        Node[] tempArray = (Node[]) new Object[n]; // All values initially null.
+        list = tempArray;
         labels = (T[]) new Object[n]; // All values initially null.
         visitedVertices = (T[]) new Object[n]; // All values initially null.
         numberOfVisitedVertices = 0;
@@ -341,16 +343,16 @@ public class LinkedGraph<T>
 
     private class Node
     {
-        private int data;
+        private T data;
         private Node next;
 
-        public Node(int data,Node nextNode)
+        public Node(T data,Node nextNode)
         {
             setData(data);
             setNextNode(nextNode);
         }
 
-        public void setData(int data)
+        public void setData(T data)
         {
             this.data = data;
         }
@@ -360,7 +362,7 @@ public class LinkedGraph<T>
             this.next = next;
         }
 
-        public int getData()
+        public T getData()
         {
             return this.data;
         }
